@@ -203,7 +203,7 @@ hr {
 <body>
 <h1>Summary</h1>
 
-<p>googleVis works with markdown v1 and v2. plotly works with both, but doesn&#39;t show up in the viewer, I have to go to a browser. I can only get rCharts to work by either saving files (so it&#39;s not standalone), or by using markdown v1. ggvis does not seem to be interactive without shiny. I can get a static version to output in v2, but nothing in v1. knit2html(input=&ldquo;InteractiveTest2.Rmd&rdquo;) gives an output somewhere between v1 and v2 (but it has the compatability as v1).</p>
+<p>googleVis works with markdown v1 and v2. plotly works with both, but doesn&#39;t show up in the viewer, I have to go to a browser. I can only get rCharts to work by either saving files, or by using markdown v1. ggvis does not seem to be interactive without shiny. I can get a static version to output in v2, but nothing in v1. knit2html(input=&ldquo;InteractiveTest2.Rmd&rdquo;) gives an output somewhere between v1 and v2 (but it has the compatability as v1), so use this.</p>
 
 <h1>googleVis</h1>
 
@@ -214,14 +214,14 @@ print(G,&quot;chart&quot;)
 
 <!-- GeoChart generated in R 3.2.2 by googleVis 0.5.10 package -->
 
-<!-- Wed Oct 07 20:40:42 2015 -->
+<!-- Wed Oct 07 20:52:12 2015 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID9cc5aaa5ac5 () {
+function gvisDataGeoChartID9cc1bab2b49 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -273,14 +273,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID9cc5aaa5ac5() {
-var data = gvisDataGeoChartID9cc5aaa5ac5();
+function drawChartGeoChartID9cc1bab2b49() {
+var data = gvisDataGeoChartID9cc1bab2b49();
 var options = {};
 options["width"] =    600;
 options["height"] =    400;
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID9cc5aaa5ac5')
+    document.getElementById('GeoChartID9cc1bab2b49')
     );
     chart.draw(data,options);
     
@@ -304,9 +304,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID9cc5aaa5ac5);
+callbacks.push(drawChartGeoChartID9cc1bab2b49);
 })();
-function displayChartGeoChartID9cc5aaa5ac5() {
+function displayChartGeoChartID9cc1bab2b49() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -332,12 +332,12 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID9cc5aaa5ac5"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID9cc1bab2b49"></script>
  
 
 <!-- divChart -->
 
-<div id="GeoChartID9cc5aaa5ac5" 
+<div id="GeoChartID9cc1bab2b49" 
   style="width: 600; height: 400;">
 </div>
 
@@ -348,7 +348,7 @@ data(economics, package=&quot;ggplot2&quot;)
 econ&lt;-transform(economics, date = as.character(date))
 m1&lt;-mPlot(x=&quot;date&quot;,y=c(&quot;psavert&quot;,&quot;uempmed&quot;),type=&quot;Line&quot;,data=econ)
 m1$set(pointSize=0, lineWidth=1)
-m1$print(&#39;iframsrc&#39;, standalone = TRUE, include_assets = TRUE) # works in markdown v1
+m1$print(&#39;iframsrc&#39;, standalone = TRUE, include_assets = TRUE) # works in markdown v1 only
 </code></pre>
 
 <p><link rel='stylesheet' href=data:text/css;base64,Lm1vcnJpcy1ob3Zlcntwb3NpdGlvbjphYnNvbHV0ZTt6LWluZGV4OjEwMDA7fS5tb3JyaXMtaG92ZXIubW9ycmlzLWRlZmF1bHQtc3R5bGV7Ym9yZGVyLXJhZGl1czoxMHB4O3BhZGRpbmc6NnB4O2NvbG9yOiM2NjY7YmFja2dyb3VuZDpyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuOCk7Ym9yZGVyOnNvbGlkIDJweCByZ2JhKDIzMCwgMjMwLCAyMzAsIDAuOCk7Zm9udC1mYW1pbHk6c2Fucy1zZXJpZjtmb250LXNpemU6MTJweDt0ZXh0LWFsaWduOmNlbnRlcjt9Lm1vcnJpcy1ob3Zlci5tb3JyaXMtZGVmYXVsdC1zdHlsZSAubW9ycmlzLWhvdmVyLXJvdy1sYWJlbHtmb250LXdlaWdodDpib2xkO21hcmdpbjowLjI1ZW0gMDt9Ci5tb3JyaXMtaG92ZXIubW9ycmlzLWRlZmF1bHQtc3R5bGUgLm1vcnJpcy1ob3Zlci1wb2ludHt3aGl0ZS1zcGFjZTpub3dyYXA7bWFyZ2luOjAuMWVtIDA7fQo=></p>
@@ -4216,23 +4216,21 @@ m1$print(&#39;iframsrc&#39;, standalone = TRUE, include_assets = TRUE) # works i
     new Morris[chartType](chartParams)
 </script>
 
-<pre><code class="r">#m1$save(&#39;m1.html&#39;, cdn=TRUE)
+<pre><code class="r"># This solution doesn&#39;t work when tring to post the file online, but will work in the viewer of v2
+#m1$save(&#39;m1.html&#39;, cdn=TRUE)
 #cat(&#39;&lt;iframe src=&quot;m1.html&quot; width=100%, height=600&gt;&lt;/iframe&gt;&#39;)
-#print(m1)
+
 
 hair_eye_male = subset(as.data.frame(HairEyeColor), Sex == &quot;Male&quot;)
 n1 &lt;- nPlot(Freq ~ Hair, group = &#39;Eye&#39;, 
   data = hair_eye_male, type = &#39;multiBarChart&#39;
 )
 n1$set(width = 800)
-# this solution doesn&#39;t work when tring to post the file online
 #n1$save(&#39;n1.html&#39;, cdn=TRUE)
 #cat(&#39;&lt;iframe src=&quot;n1.html&quot; width=100%, height=600&gt;&lt;/iframe&gt;&#39;)
 
-# this solution only works with markdown v1 (knit2html(input=&quot;InteractiveTest2.Rmd&quot;))
-
-#n1$print(&#39;iframsrc&#39;, standalone = TRUE, include_assets = TRUE) # works in markdown v1
-n1$print(&#39;inline&#39;, standalone = TRUE, include_assets = TRUE) # works in markdown v1
+#n1$print(&#39;iframsrc&#39;, standalone = TRUE, include_assets = TRUE)
+n1$print(&#39;inline&#39;, standalone = TRUE, include_assets = TRUE) # also works in v1
 </code></pre>
 
 <p><link rel='stylesheet' href=data:text/css;base64,Ci8qKioqKioqKioqKioqKioqKioqKgogKiBIVE1MIENTUwogKi8KCgouY2hhcnRXcmFwIHsKICBtYXJnaW46IDA7CiAgcGFkZGluZzogMDsKICBvdmVyZmxvdzogaGlkZGVuOwp9CgoKLyoqKioqKioqKioqKioqKioqKioqCiAqIFRPT0xUSVAgQ1NTCiAqLwoKLm52dG9vbHRpcCB7CiAgcG9zaXRpb246IGFic29sdXRlOwogIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LDI1NSwyNTUsMSk7CiAgcGFkZGluZzogMXB4OwogIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMCwwLDAsLjIpOwogIHotaW5kZXg6IDEwMDAwOwoKICBmb250LWZhbWlseTogQXJpYWw7CiAgZm9udC1zaXplOiAxM3B4OwoKICB0cmFuc2l0aW9uOiBvcGFjaXR5IDUwMG1zIGxpbmVhcjsKICAtbW96LXRyYW5zaXRpb246IG9wYWNpdHkgNTAwbXMgbGluZWFyOwogIC13ZWJraXQtdHJhbnNpdGlvbjogb3BhY2l0eSA1MDBtcyBsaW5lYXI7CgogIHRyYW5zaXRpb24tZGVsYXk6IDUwMG1zOwogIC1tb3otdHJhbnNpdGlvbi1kZWxheTogNTAwbXM7CiAgLXdlYmtpdC10cmFuc2l0aW9uLWRlbGF5OiA1MDBtczsKCiAgLW1vei1ib3gtc2hhZG93OiAwIDVweCAxMHB4IHJnYmEoMCwwLDAsLjIpOwogIC13ZWJraXQtYm94LXNoYWRvdzogMCA1cHggMTBweCByZ2JhKDAsMCwwLC4yKTsKICBib3gtc2hhZG93OiAwIDVweCAxMHB4IHJnYmEoMCwwLDAsLjIpOwoKICAtd2Via2l0LWJvcmRlci1yYWRpdXM6IDZweDsKICAtbW96LWJvcmRlci1yYWRpdXM6IDZweDsKICBib3JkZXItcmFkaXVzOiA2cHg7CgogIHBvaW50ZXItZXZlbnRzOiBub25lOwoKICAtd2Via2l0LXRvdWNoLWNhbGxvdXQ6IG5vbmU7CiAgLXdlYmtpdC11c2VyLXNlbGVjdDogbm9uZTsKICAta2h0bWwtdXNlci1zZWxlY3Q6IG5vbmU7CiAgLW1vei11c2VyLXNlbGVjdDogbm9uZTsKICAtbXMtdXNlci1zZWxlY3Q6IG5vbmU7CiAgdXNlci1zZWxlY3Q6IG5vbmU7Cn0KCi5udnRvb2x0aXAueC1udnRvb2x0aXAsCi5udnRvb2x0aXAueS1udnRvb2x0aXAgewogIHBhZGRpbmc6IDhweDsKfQoKLm52dG9vbHRpcCBoMyB7CiAgbWFyZ2luOiAwOwogIHBhZGRpbmc6IDRweCAxNHB4OwogIGxpbmUtaGVpZ2h0OiAxOHB4OwogIGZvbnQtd2VpZ2h0OiBub3JtYWw7CiAgYmFja2dyb3VuZC1jb2xvcjogI2Y3ZjdmNzsKICB0ZXh0LWFsaWduOiBjZW50ZXI7CgogIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZWJlYmViOwoKICAtd2Via2l0LWJvcmRlci1yYWRpdXM6IDVweCA1cHggMCAwOwogIC1tb3otYm9yZGVyLXJhZGl1czogNXB4IDVweCAwIDA7CiAgYm9yZGVyLXJhZGl1czogNXB4IDVweCAwIDA7Cn0KCi5udnRvb2x0aXAgcCB7CiAgbWFyZ2luOiAwOwogIHBhZGRpbmc6IDVweCAxNHB4OwogIHRleHQtYWxpZ246IGNlbnRlcjsKfQoKLm52dG9vbHRpcCBzcGFuIHsKICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CiAgbWFyZ2luOiAycHggMDsKfQoKLm52dG9vbHRpcC1wZW5kaW5nLXJlbW92YWwgewogIHBvc2l0aW9uOiBhYnNvbHV0ZTsKICBwb2ludGVyLWV2ZW50czogbm9uZTsKfQoKCi8qKioqKioqKioqKioqKioqKioqKgogKiBTVkcgQ1NTCiAqLwoKCnN2ZyB7CiAgLXdlYmtpdC10b3VjaC1jYWxsb3V0OiBub25lOwogIC13ZWJraXQtdXNlci1zZWxlY3Q6IG5vbmU7CiAgLWtodG1sLXVzZXItc2VsZWN0OiBub25lOwogIC1tb3otdXNlci1zZWxlY3Q6IG5vbmU7CiAgLW1zLXVzZXItc2VsZWN0OiBub25lOwogIHVzZXItc2VsZWN0OiBub25lOwogIC8qIFRyeWluZyB0byBnZXQgU1ZHIHRvIGFjdCBsaWtlIGEgZ3JlZWR5IGJsb2NrIGluIGFsbCBicm93c2VycyAqLwogIGRpc3BsYXk6IGJsb2NrOwogIHdpZHRoOjEwMCU7CiAgaGVpZ2h0OjEwMCU7Cn0KCgpzdmcgdGV4dCB7CiAgZm9udDogbm9ybWFsIDEycHggQXJpYWw7Cn0KCnN2ZyAudGl0bGUgewogZm9udDogYm9sZCAxNHB4IEFyaWFsOwp9CgoubnZkMyAubnYtYmFja2dyb3VuZCB7CiAgZmlsbDogd2hpdGU7CiAgZmlsbC1vcGFjaXR5OiAwOwogIC8qCiAgcG9pbnRlci1ldmVudHM6IG5vbmU7CiAgKi8KfQoKLm52ZDMubnYtbm9EYXRhIHsKICBmb250LXNpemU6IDE4cHg7CiAgZm9udC13ZWlnaHQ6IGJvbGQ7Cn0KCgovKioqKioqKioqKgoqICBCcnVzaAoqLwoKLm52LWJydXNoIC5leHRlbnQgewogIGZpbGwtb3BhY2l0eTogLjEyNTsKICBzaGFwZS1yZW5kZXJpbmc6IGNyaXNwRWRnZXM7Cn0KCgoKLyoqKioqKioqKioKKiAgTGVnZW5kCiovCgoubnZkMyAubnYtbGVnZW5kIC5udi1zZXJpZXMgewogIGN1cnNvcjogcG9pbnRlcjsKfQoKLm52ZDMgLm52LWxlZ2VuZCAuZGlzYWJsZWQgY2lyY2xlIHsKICBmaWxsLW9wYWNpdHk6IDA7Cn0KCgoKLyoqKioqKioqKioKKiAgQXhlcwoqLwoKLm52ZDMgLm52LWF4aXMgcGF0aCB7CiAgZmlsbDogbm9uZTsKICBzdHJva2U6ICMwMDA7CiAgc3Ryb2tlLW9wYWNpdHk6IC43NTsKICBzaGFwZS1yZW5kZXJpbmc6IGNyaXNwRWRnZXM7Cn0KCi5udmQzIC5udi1heGlzIHBhdGguZG9tYWluIHsKICBzdHJva2Utb3BhY2l0eTogLjc1Owp9CgoubnZkMyAubnYtYXhpcy5udi14IHBhdGguZG9tYWluIHsKICBzdHJva2Utb3BhY2l0eTogMDsKfQoKLm52ZDMgLm52LWF4aXMgbGluZSB7CiAgZmlsbDogbm9uZTsKICBzdHJva2U6ICMwMDA7CiAgc3Ryb2tlLW9wYWNpdHk6IC4yNTsKICBzaGFwZS1yZW5kZXJpbmc6IGNyaXNwRWRnZXM7Cn0KCi5udmQzIC5udi1heGlzIGxpbmUuemVybyB7CiAgc3Ryb2tlLW9wYWNpdHk6IC43NTsKfQoKLm52ZDMgLm52LWF4aXMgLm52LWF4aXNNYXhNaW4gdGV4dCB7CiAgZm9udC13ZWlnaHQ6IGJvbGQ7Cn0KCi5udmQzIC54ICAubnYtYXhpcyAubnYtYXhpc01heE1pbiB0ZXh0LAoubnZkMyAueDIgLm52LWF4aXMgLm52LWF4aXNNYXhNaW4gdGV4dCwKLm52ZDMgLngzIC5udi1heGlzIC5udi1heGlzTWF4TWluIHRleHQgewogIHRleHQtYW5jaG9yOiBtaWRkbGUKfQoKCgovKioqKioqKioqKgoqICBCcnVzaAoqLwoKLm52LWJydXNoIC5yZXNpemUgcGF0aCB7CiAgZmlsbDogI2VlZTsKICBzdHJva2U6ICM2NjY7Cn0KCgoKLyoqKioqKioqKioKKiAgQmFycwoqLwoKLm52ZDMgLm52LWJhcnMgLm5lZ2F0aXZlIHJlY3QgewogICAgemZpbGw6IGJyb3duOwp9CgoubnZkMyAubnYtYmFycyByZWN0IHsKICB6ZmlsbDogc3RlZWxibHVlOwogIGZpbGwtb3BhY2l0eTogLjc1OwoKICB0cmFuc2l0aW9uOiBmaWxsLW9wYWNpdHkgMjUwbXMgbGluZWFyOwogIC1tb3otdHJhbnNpdGlvbjogZmlsbC1vcGFjaXR5IDI1MG1zIGxpbmVhcjsKICAtd2Via2l0LXRyYW5zaXRpb246IGZpbGwtb3BhY2l0eSAyNTBtcyBsaW5lYXI7Cn0KCi5udmQzIC5udi1iYXJzIHJlY3Q6aG92ZXIgewogIGZpbGwtb3BhY2l0eTogMTsKfQoKLm52ZDMgLm52LWJhcnMgLmhvdmVyIHJlY3QgewogIGZpbGw6IGxpZ2h0Ymx1ZTsKfQoKLm52ZDMgLm52LWJhcnMgdGV4dCB7CiAgZmlsbDogcmdiYSgwLDAsMCwwKTsKfQoKLm52ZDMgLm52LWJhcnMgLmhvdmVyIHRleHQgewogIGZpbGw6IHJnYmEoMCwwLDAsMSk7Cn0KCgovKioqKioqKioqKgoqICBCYXJzCiovCgoubnZkMyAubnYtbXVsdGliYXIgLm52LWdyb3VwcyByZWN0LAoubnZkMyAubnYtbXVsdGliYXJIb3Jpem9udGFsIC5udi1ncm91cHMgcmVjdCwKLm52ZDMgLm52LWRpc2NyZXRlYmFyIC5udi1ncm91cHMgcmVjdCB7CiAgc3Ryb2tlLW9wYWNpdHk6IDA7CgogIHRyYW5zaXRpb246IGZpbGwtb3BhY2l0eSAyNTBtcyBsaW5lYXI7CiAgLW1vei10cmFuc2l0aW9uOiBmaWxsLW9wYWNpdHkgMjUwbXMgbGluZWFyOwogIC13ZWJraXQtdHJhbnNpdGlvbjogZmlsbC1vcGFjaXR5IDI1MG1zIGxpbmVhcjsKfQoKLm52ZDMgLm52LW11bHRpYmFyIC5udi1ncm91cHMgcmVjdDpob3ZlciwKLm52ZDMgLm52LW11bHRpYmFySG9yaXpvbnRhbCAubnYtZ3JvdXBzIHJlY3Q6aG92ZXIsCi5udmQzIC5udi1kaXNjcmV0ZWJhciAubnYtZ3JvdXBzIHJlY3Q6aG92ZXIgewogIGZpbGwtb3BhY2l0eTogMTsKfQoKLm52ZDMgLm52LWRpc2NyZXRlYmFyIC5udi1ncm91cHMgdGV4dCwKLm52ZDMgLm52LW11bHRpYmFySG9yaXpvbnRhbCAubnYtZ3JvdXBzIHRleHQgewogIGZvbnQtd2VpZ2h0OiBib2xkOwogIGZpbGw6IHJnYmEoMCwwLDAsMSk7CiAgc3Ryb2tlOiByZ2JhKDAsMCwwLDApOwp9CgovKioqKioqKioqKioKKiAgUGllIENoYXJ0CiovCgoubnZkMy5udi1waWUgcGF0aCB7CiAgc3Ryb2tlLW9wYWNpdHk6IDA7CgogIHRyYW5zaXRpb246IGZpbGwtb3BhY2l0eSAyNTBtcyBsaW5lYXIsIHN0cm9rZS13aWR0aCAyNTBtcyBsaW5lYXIsIHN0cm9rZS1vcGFjaXR5IDI1MG1zIGxpbmVhcjsKICAtbW96LXRyYW5zaXRpb246IGZpbGwtb3BhY2l0eSAyNTBtcyBsaW5lYXIsIHN0cm9rZS13aWR0aCAyNTBtcyBsaW5lYXIsIHN0cm9rZS1vcGFjaXR5IDI1MG1zIGxpbmVhcjsKICAtd2Via2l0LXRyYW5zaXRpb246IGZpbGwtb3BhY2l0eSAyNTBtcyBsaW5lYXIsIHN0cm9rZS13aWR0aCAyNTBtcyBsaW5lYXIsIHN0cm9rZS1vcGFjaXR5IDI1MG1zIGxpbmVhcjsKCn0KCi5udmQzLm52LXBpZSAubnYtc2xpY2UgdGV4dCB7CiAgc3Ryb2tlOiAjMDAwOwogIHN0cm9rZS13aWR0aDogMDsKfQoKLm52ZDMubnYtcGllIHBhdGggewogIHN0cm9rZTogI2ZmZjsKICBzdHJva2Utd2lkdGg6IDFweDsKICBzdHJva2Utb3BhY2l0eTogMTsKfQoKLm52ZDMubnYtcGllIC5ob3ZlciBwYXRoIHsKICBmaWxsLW9wYWNpdHk6IC43OwovKgogIHN0cm9rZS13aWR0aDogNnB4OwogIHN0cm9rZS1vcGFjaXR5OiAxOwoqLwp9CgoubnZkMy5udi1waWUgLm52LWxhYmVsIHJlY3QgewogIGZpbGwtb3BhY2l0eTogMDsKICBzdHJva2Utb3BhY2l0eTogMDsKfQoKLyoqKioqKioqKioKKiBMaW5lcwoqLwoKLm52ZDMgLm52LWdyb3VwcyBwYXRoLm52LWxpbmUgewogIGZpbGw6IG5vbmU7CiAgc3Ryb2tlLXdpZHRoOiAyLjVweDsKICAvKgogIHN0cm9rZS1saW5lY2FwOiByb3VuZDsKICBzaGFwZS1yZW5kZXJpbmc6IGdlb21ldHJpY1ByZWNpc2lvbjsKCiAgdHJhbnNpdGlvbjogc3Ryb2tlLXdpZHRoIDI1MG1zIGxpbmVhcjsKICAtbW96LXRyYW5zaXRpb246IHN0cm9rZS13aWR0aCAyNTBtcyBsaW5lYXI7CiAgLXdlYmtpdC10cmFuc2l0aW9uOiBzdHJva2Utd2lkdGggMjUwbXMgbGluZWFyOwoKICB0cmFuc2l0aW9uLWRlbGF5OiAyNTBtcwogIC1tb3otdHJhbnNpdGlvbi1kZWxheTogMjUwbXM7CiAgLXdlYmtpdC10cmFuc2l0aW9uLWRlbGF5OiAyNTBtczsKICAqLwp9CgoubnZkMyAubnYtZ3JvdXBzIHBhdGgubnYtYXJlYSB7CiAgc3Ryb2tlOiBub25lOwogIC8qCiAgc3Ryb2tlLWxpbmVjYXA6IHJvdW5kOwogIHNoYXBlLXJlbmRlcmluZzogZ2VvbWV0cmljUHJlY2lzaW9uOwoKICBzdHJva2Utd2lkdGg6IDIuNXB4OwogIHRyYW5zaXRpb246IHN0cm9rZS13aWR0aCAyNTBtcyBsaW5lYXI7CiAgLW1vei10cmFuc2l0aW9uOiBzdHJva2Utd2lkdGggMjUwbXMgbGluZWFyOwogIC13ZWJraXQtdHJhbnNpdGlvbjogc3Ryb2tlLXdpZHRoIDI1MG1zIGxpbmVhcjsKCiAgdHJhbnNpdGlvbi1kZWxheTogMjUwbXMKICAtbW96LXRyYW5zaXRpb24tZGVsYXk6IDI1MG1zOwogIC13ZWJraXQtdHJhbnNpdGlvbi1kZWxheTogMjUwbXM7CiAgKi8KfQoKLm52ZDMgLm52LWxpbmUuaG92ZXIgcGF0aCB7CiAgc3Ryb2tlLXdpZHRoOiA2cHg7Cn0KCi8qCi5udmQzLnNjYXR0ZXIgLmdyb3VwcyAucG9pbnQgewogIGZpbGwtb3BhY2l0eTogMC4xOwogIHN0cm9rZS1vcGFjaXR5OiAwLjE7Cn0KICAqLwoKLm52ZDMubnYtbGluZSAubnZkMy5udi1zY2F0dGVyIC5udi1ncm91cHMgLm52LXBvaW50IHsKICBmaWxsLW9wYWNpdHk6IDA7CiAgc3Ryb2tlLW9wYWNpdHk6IDA7Cn0KCi5udmQzLm52LXNjYXR0ZXIubnYtc2luZ2xlLXBvaW50IC5udi1ncm91cHMgLm52LXBvaW50IHsKICBmaWxsLW9wYWNpdHk6IC41ICFpbXBvcnRhbnQ7CiAgc3Ryb2tlLW9wYWNpdHk6IC41ICFpbXBvcnRhbnQ7Cn0KCgoubnZkMyAubnYtZ3JvdXBzIC5udi1wb2ludCB7CiAgdHJhbnNpdGlvbjogc3Ryb2tlLXdpZHRoIDI1MG1zIGxpbmVhciwgc3Ryb2tlLW9wYWNpdHkgMjUwbXMgbGluZWFyOwogIC1tb3otdHJhbnNpdGlvbjogc3Ryb2tlLXdpZHRoIDI1MG1zIGxpbmVhciwgc3Ryb2tlLW9wYWNpdHkgMjUwbXMgbGluZWFyOwogIC13ZWJraXQtdHJhbnNpdGlvbjogc3Ryb2tlLXdpZHRoIDI1MG1zIGxpbmVhciwgc3Ryb2tlLW9wYWNpdHkgMjUwbXMgbGluZWFyOwp9CgoubnZkMy5udi1zY2F0dGVyIC5udi1ncm91cHMgLm52LXBvaW50LmhvdmVyLAoubnZkMyAubnYtZ3JvdXBzIC5udi1wb2ludC5ob3ZlciB7CiAgc3Ryb2tlLXdpZHRoOiAyMHB4OwogIGZpbGwtb3BhY2l0eTogLjUgIWltcG9ydGFudDsKICBzdHJva2Utb3BhY2l0eTogLjUgIWltcG9ydGFudDsKfQoKCi5udmQzIC5udi1wb2ludC1wYXRocyBwYXRoIHsKICBzdHJva2U6ICNhYWE7CiAgc3Ryb2tlLW9wYWNpdHk6IDA7CiAgZmlsbDogI2VlZTsKICBmaWxsLW9wYWNpdHk6IDA7Cn0KCgoKLm52ZDMgLm52LWluZGV4TGluZSB7CiAgY3Vyc29yOiBldy1yZXNpemU7Cn0KCgovKioqKioqKioqKgoqIERpc3RyaWJ1dGlvbgoqLwoKLm52ZDMgLm52LWRpc3RyaWJ1dGlvbiB7CiAgcG9pbnRlci1ldmVudHM6IG5vbmU7Cn0KCgoKLyoqKioqKioqKioKKiAgU2NhdHRlcgoqLwoKLyogKipBdHRlbXB0aW5nIHRvIHJlbW92ZSB0aGlzIGZvciB1c2VWb3Jvbm9pKGZhbHNlKSwgbmVlZCB0byBzZWUgaWYgaXQncyByZXF1aXJlZCBhbnl3aGVyZQoubnZkMyAubnYtZ3JvdXBzIC5udi1wb2ludCB7CiAgcG9pbnRlci1ldmVudHM6IG5vbmU7Cn0KKi8KCi5udmQzIC5udi1ncm91cHMgLm52LXBvaW50LmhvdmVyIHsKICBzdHJva2Utd2lkdGg6IDIwcHg7CiAgc3Ryb2tlLW9wYWNpdHk6IC41Owp9CgoubnZkMyAubnYtc2NhdHRlciAubnYtcG9pbnQuaG92ZXIgewogIGZpbGwtb3BhY2l0eTogMTsKfQoKLyoKLm52LWdyb3VwLmhvdmVyIC5udi1wb2ludCB7CiAgZmlsbC1vcGFjaXR5OiAxOwp9CiovCgoKLyoqKioqKioqKioKKiAgU3RhY2tlZCBBcmVhCiovCgoubnZkMy5udi1zdGFja2VkYXJlYSBwYXRoLm52LWFyZWEgewogIGZpbGwtb3BhY2l0eTogLjc7CiAgLyoKICBzdHJva2Utb3BhY2l0eTogLjY1OwogIGZpbGwtb3BhY2l0eTogMTsKICAqLwogIHN0cm9rZS1vcGFjaXR5OiAwOwoKICB0cmFuc2l0aW9uOiBmaWxsLW9wYWNpdHkgMjUwbXMgbGluZWFyLCBzdHJva2Utb3BhY2l0eSAyNTBtcyBsaW5lYXI7CiAgLW1vei10cmFuc2l0aW9uOiBmaWxsLW9wYWNpdHkgMjUwbXMgbGluZWFyLCBzdHJva2Utb3BhY2l0eSAyNTBtcyBsaW5lYXI7CiAgLXdlYmtpdC10cmFuc2l0aW9uOiBmaWxsLW9wYWNpdHkgMjUwbXMgbGluZWFyLCBzdHJva2Utb3BhY2l0eSAyNTBtcyBsaW5lYXI7CgogIC8qCiAgdHJhbnNpdGlvbi1kZWxheTogNTAwbXM7CiAgLW1vei10cmFuc2l0aW9uLWRlbGF5OiA1MDBtczsKICAtd2Via2l0LXRyYW5zaXRpb24tZGVsYXk6IDUwMG1zOwogICovCgp9CgoubnZkMy5udi1zdGFja2VkYXJlYSBwYXRoLm52LWFyZWEuaG92ZXIgewogIGZpbGwtb3BhY2l0eTogLjk7CiAgLyoKICBzdHJva2Utb3BhY2l0eTogLjg1OwogICovCn0KLyoKLmQzc3RhY2tlZGFyZWEgLmdyb3VwcyBwYXRoIHsKICBzdHJva2Utb3BhY2l0eTogMDsKfQogICovCgoKCi5udmQzLm52LXN0YWNrZWRhcmVhIC5udi1ncm91cHMgLm52LXBvaW50IHsKICBzdHJva2Utb3BhY2l0eTogMDsKICBmaWxsLW9wYWNpdHk6IDA7Cn0KCi5udmQzLm52LXN0YWNrZWRhcmVhIC5udi1ncm91cHMgLm52LXBvaW50LmhvdmVyIHsKICBzdHJva2Utd2lkdGg6IDIwcHg7CiAgc3Ryb2tlLW9wYWNpdHk6IC43NTsKICBmaWxsLW9wYWNpdHk6IDE7Cn0KCgoKLyoqKioqKioqKioKKiAgTGluZSBQbHVzIEJhcgoqLwoKLm52ZDMubnYtbGluZVBsdXNCYXIgLm52LWJhciByZWN0IHsKICBmaWxsLW9wYWNpdHk6IC43NTsKfQoKLm52ZDMubnYtbGluZVBsdXNCYXIgLm52LWJhciByZWN0OmhvdmVyIHsKICBmaWxsLW9wYWNpdHk6IDE7Cn0KCgovKioqKioqKioqKgoqICBCdWxsZXQKKi8KCi5udmQzLm52LWJ1bGxldCB7IGZvbnQ6IDEwcHggc2Fucy1zZXJpZjsgfQoubnZkMy5udi1idWxsZXQgLm52LW1lYXN1cmUgeyBmaWxsLW9wYWNpdHk6IC44OyB9Ci5udmQzLm52LWJ1bGxldCAubnYtbWVhc3VyZTpob3ZlciB7IGZpbGwtb3BhY2l0eTogMTsgfQoubnZkMy5udi1idWxsZXQgLm52LW1hcmtlciB7IHN0cm9rZTogIzAwMDsgc3Ryb2tlLXdpZHRoOiAycHg7IH0KLm52ZDMubnYtYnVsbGV0IC5udi1tYXJrZXJUcmlhbmdsZSB7IHN0cm9rZTogIzAwMDsgZmlsbDogI2ZmZjsgc3Ryb2tlLXdpZHRoOiAxLjVweDsgfQoubnZkMy5udi1idWxsZXQgLm52LXRpY2sgbGluZSB7IHN0cm9rZTogIzY2Njsgc3Ryb2tlLXdpZHRoOiAuNXB4OyB9Ci5udmQzLm52LWJ1bGxldCAubnYtcmFuZ2UubnYtczAgeyBmaWxsOiAjZWVlOyB9Ci5udmQzLm52LWJ1bGxldCAubnYtcmFuZ2UubnYtczEgeyBmaWxsOiAjZGRkOyB9Ci5udmQzLm52LWJ1bGxldCAubnYtcmFuZ2UubnYtczIgeyBmaWxsOiAjY2NjOyB9Ci5udmQzLm52LWJ1bGxldCAubnYtdGl0bGUgeyBmb250LXNpemU6IDE0cHg7IGZvbnQtd2VpZ2h0OiBib2xkOyB9Ci5udmQzLm52LWJ1bGxldCAubnYtc3VidGl0bGUgeyBmaWxsOiAjOTk5OyB9CgoKLm52ZDMubnYtYnVsbGV0IC5udi1yYW5nZSB7CiAgZmlsbDogIzk5OTsKICBmaWxsLW9wYWNpdHk6IC40Owp9Ci5udmQzLm52LWJ1bGxldCAubnYtcmFuZ2U6aG92ZXIgewogIGZpbGwtb3BhY2l0eTogLjc7Cn0KCgoKLyoqKioqKioqKioKKiBTcGFya2xpbmUKKi8KCi5udmQzLm52LXNwYXJrbGluZSBwYXRoIHsKICBmaWxsOiBub25lOwp9CgoubnZkMy5udi1zcGFya2xpbmVwbHVzIGcubnYtaG92ZXJWYWx1ZSB7CiAgcG9pbnRlci1ldmVudHM6IG5vbmU7Cn0KCi5udmQzLm52LXNwYXJrbGluZXBsdXMgLm52LWhvdmVyVmFsdWUgbGluZSB7CiAgc3Ryb2tlOiAjMzMzOwogIHN0cm9rZS13aWR0aDogMS41cHg7CiB9CgoubnZkMy5udi1zcGFya2xpbmVwbHVzLAoubnZkMy5udi1zcGFya2xpbmVwbHVzIGcgewogIHBvaW50ZXItZXZlbnRzOiBhbGw7Cn0KCi5udmQzIC5udi1ob3ZlckFyZWEgewogIGZpbGwtb3BhY2l0eTogMDsKICBzdHJva2Utb3BhY2l0eTogMDsKfQoKLm52ZDMubnYtc3BhcmtsaW5lcGx1cyAubnYteFZhbHVlLAoubnZkMy5udi1zcGFya2xpbmVwbHVzIC5udi15VmFsdWUgewogIC8qCiAgc3Ryb2tlOiAjNjY2OwogICovCiAgc3Ryb2tlLXdpZHRoOiAwOwogIGZvbnQtc2l6ZTogLjllbTsKICBmb250LXdlaWdodDogbm9ybWFsOwp9CgoubnZkMy5udi1zcGFya2xpbmVwbHVzIC5udi15VmFsdWUgewogIHN0cm9rZTogI2Y2NjsKfQoKLm52ZDMubnYtc3BhcmtsaW5lcGx1cyAubnYtbWF4VmFsdWUgewogIHN0cm9rZTogIzJjYTAyYzsKICBmaWxsOiAjMmNhMDJjOwp9CgoubnZkMy5udi1zcGFya2xpbmVwbHVzIC5udi1taW5WYWx1ZSB7CiAgc3Ryb2tlOiAjZDYyNzI4OwogIGZpbGw6ICNkNjI3Mjg7Cn0KCi5udmQzLm52LXNwYXJrbGluZXBsdXMgLm52LWN1cnJlbnRWYWx1ZSB7CiAgLyoKICBzdHJva2U6ICM0NDQ7CiAgZmlsbDogIzAwMDsKICAqLwogIGZvbnQtd2VpZ2h0OiBib2xkOwogIGZvbnQtc2l6ZTogMS4xZW07Cn0KCi8qKioqKioqKioqCiogaGlzdG9yaWNhbCBzdG9jawoqLwoKLm52ZDMubnYtb2hsY0JhciAubnYtdGlja3MgLm52LXRpY2sgewogIHN0cm9rZS13aWR0aDogMnB4Owp9CgoubnZkMy5udi1vaGxjQmFyIC5udi10aWNrcyAubnYtdGljay5ob3ZlciB7CiAgc3Ryb2tlLXdpZHRoOiA0cHg7Cn0KCi5udmQzLm52LW9obGNCYXIgLm52LXRpY2tzIC5udi10aWNrLnBvc2l0aXZlIHsKIHN0cm9rZTogIzJjYTAyYzsKfQoKLm52ZDMubnYtb2hsY0JhciAubnYtdGlja3MgLm52LXRpY2submVnYXRpdmUgewogc3Ryb2tlOiAjZDYyNzI4Owp9CgoubnZkMy5udi1oaXN0b3JpY2FsU3RvY2tDaGFydCAubnYtYXhpcyAubnYtYXhpc2xhYmVsIHsKICBmb250LXdlaWdodDogYm9sZDsKfQoKLm52ZDMubnYtaGlzdG9yaWNhbFN0b2NrQ2hhcnQgLm52LWRyYWdUYXJnZXQgewogIGZpbGwtb3BhY2l0eTogMDsKICBzdHJva2U6IG5vbmU7CiAgY3Vyc29yOiBtb3ZlOwp9CgoubnZkMyAubnYtYnJ1c2ggLmV4dGVudCB7CiAgLyoKICBjdXJzb3I6IGV3LXJlc2l6ZSAhaW1wb3J0YW50OwogICovCiAgZmlsbC1vcGFjaXR5OiAwICFpbXBvcnRhbnQ7Cn0KCi5udmQzIC5udi1icnVzaEJhY2tncm91bmQgcmVjdCB7CiAgc3Ryb2tlOiAjMDAwOwogIHN0cm9rZS13aWR0aDogLjQ7CiAgZmlsbDogI2ZmZjsKICBmaWxsLW9wYWNpdHk6IC43Owp9CgoKCi8qKioqKioqKioqCiogSW5kZW50ZWQgVHJlZQoqLwoKCi8qKgogKiBUT0RPOiB0aGUgZm9sbG93aW5nIDMgc2VsZWN0b3JzIGFyZSBiYXNlZCBvbiBjbGFzc2VzIHVzZWQgaW4gdGhlIGV4YW1wbGUuICBJIHNob3VsZCBlaXRoZXIgbWFrZSB0aGVtIHN0YW5kYXJkIGFuZCBsZWF2ZSB0aGVtIGhlcmUsIG9yIG1vdmUgdG8gYSBDU1MgZmlsZSBub3QgaW5jbHVkZWQgaW4gdGhlIGxpYnJhcnkKICovCi5udmQzLm52LWluZGVudGVkdHJlZSAubmFtZSB7CiAgbWFyZ2luLWxlZnQ6IDVweDsKfQoKLm52ZDMubnYtaW5kZW50ZWR0cmVlIC5jbGlja2FibGUgewogIGNvbG9yOiAjMDhDOwogIGN1cnNvcjogcG9pbnRlcjsKfQoKLm52ZDMubnYtaW5kZW50ZWR0cmVlIHNwYW4uY2xpY2thYmxlOmhvdmVyIHsKICBjb2xvcjogIzAwNTU4MDsKICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsKfQoKCi5udmQzLm52LWluZGVudGVkdHJlZSAubnYtY2hpbGRyZW5Db3VudCB7CiAgZGlzcGxheTogaW5saW5lLWJsb2NrOwogIG1hcmdpbi1sZWZ0OiA1cHg7Cn0KCi5udmQzLm52LWluZGVudGVkdHJlZSAubnYtdHJlZWljb24gewogIGN1cnNvcjogcG9pbnRlcjsKICAvKgogIGN1cnNvcjogbi1yZXNpemU7CiAgKi8KfQoKLm52ZDMubnYtaW5kZW50ZWR0cmVlIC5udi10cmVlaWNvbi5udi1mb2xkZWQgewogIGN1cnNvcjogcG9pbnRlcjsKICAvKgogIGN1cnNvcjogcy1yZXNpemU7CiAgKi8KfQoKCg==>
@@ -4420,221 +4418,15 @@ n1$print(&#39;inline&#39;, standalone = TRUE, include_assets = TRUE) # works in 
     };
 </script>
 
-<p>ggvis</p>
-
-<pre><code class="r">library(ggvis)
-library(dplyr)
-mtcars %&gt;%
-    ggvis(~wt, ~mpg) %&gt;%
-    layer_smooths(span = input_slider(0.5, 1, value = 1)) %&gt;%
-    layer_points(size := input_slider(100, 1000, value = 100))
-</code></pre>
-
-<pre><code>## Warning: Can&#39;t output dynamic/interactive ggvis plots in a knitr document.
-## Generating a static (non-dynamic, non-interactive) version of the plot.
-</code></pre>
-
-<p>&lt;!&ndash;html_preserve&ndash;&gt;<div id="plot_id284012464-container" class="ggvis-output-container"></p>
-
-<div id="plot_id284012464" class="ggvis-output"></div>
-
-<div class="plot-gear-icon">
-<nav class="ggvis-control">
-<a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
-<ul class="ggvis-dropdown">
-<li>
-Renderer: 
-<a id="plot_id284012464_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id284012464" data-renderer="svg">SVG</a>
- | 
-<a id="plot_id284012464_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id284012464" data-renderer="canvas">Canvas</a>
-</li>
-<li>
-<a id="plot_id284012464_download" class="ggvis-download" data-plot-id="plot_id284012464">Download</a>
-</li>
-</ul>
-</nav>
-</div>
-
-<p></div>
-<script type="text/javascript">
-var plot<em>id284012464_spec = {
-  &quot;data&quot;: [
-    {
-      &quot;name&quot;: &quot;.0&quot;,
-      &quot;format&quot;: {
-        &quot;type&quot;: &quot;csv&quot;,
-        &quot;parse&quot;: {
-          &quot;wt&quot;: &quot;number&quot;,
-          &quot;mpg&quot;: &quot;number&quot;,
-          &quot;reactive_834743807&quot;: &quot;number&quot;
-        }
-      },
-      &quot;values&quot;: &quot;\&quot;wt\&quot;,\&quot;mpg\&quot;,\&quot;reactive_834743807\&quot;\n2.62,21,100\n2.875,21,100\n2.32,22.8,100\n3.215,21.4,100\n3.44,18.7,100\n3.46,18.1,100\n3.57,14.3,100\n3.19,24.4,100\n3.15,22.8,100\n3.44,19.2,100\n3.44,17.8,100\n4.07,16.4,100\n3.73,17.3,100\n3.78,15.2,100\n5.25,10.4,100\n5.424,10.4,100\n5.345,14.7,100\n2.2,32.4,100\n1.615,30.4,100\n1.835,33.9,100\n2.465,21.5,100\n3.52,15.5,100\n3.435,15.2,100\n3.84,13.3,100\n3.845,19.2,100\n1.935,27.3,100\n2.14,26,100\n1.513,30.4,100\n3.17,15.8,100\n2.77,19.7,100\n3.57,15,100\n2.78,21.4,100&quot;
-    },
-    {
-      &quot;name&quot;: &quot;.0/model_prediction1&quot;,
-      &quot;format&quot;: {
-        &quot;type&quot;: &quot;csv&quot;,
-        &quot;parse&quot;: {
-          &quot;pred</em>&quot;: &quot;number&quot;,
-          &quot;resp<em>&quot;: &quot;number&quot;
-        }
-      },
-      &quot;values&quot;: &quot;\&quot;pred</em>\&quot;,\&quot;resp<em>\&quot;\n1.513,32.3559076033652\n1.56250632911392,31.8753059433938\n1.61201265822785,31.4002837186303\n1.66151898734177,30.9307786143783\n1.7110253164557,30.4667283159411\n1.76053164556962,30.0080705086221\n1.81003797468354,29.5547428777247\n1.85954430379747,29.1066831085523\n1.90905063291139,28.6638288864083\n1.95855696202532,28.2261593300757\n2.00806329113924,27.7939085521993\n2.05756962025316,27.3671227416083\n2.10707594936709,26.9458006046978\n2.15658227848101,26.5299408478625\n2.20608860759494,26.1195421774975\n2.25559493670886,25.7146032999975\n2.30510126582278,25.3151229217576\n2.35460759493671,24.9210997491726\n2.40411392405063,24.5325324886374\n2.45362025316456,24.1494198465469\n2.50312658227848,23.7704013112288\n2.55263291139241,23.3930410310992\n2.60213924050633,23.0184854507692\n2.65164556962025,22.648013375053\n2.70115189873418,22.2829036087647\n2.7506582278481,21.9244349567186\n2.80016455696203,21.5738862237289\n2.84967088607595,21.2325362146096\n2.89917721518987,20.8994648774453\n2.9486835443038,20.563314278298\n2.99818987341772,20.2260322794124\n3.04769620253165,19.8921207313051\n3.09720253164557,19.5660814844932\n3.14670886075949,19.2524163894935\n3.19621518987342,18.9556272968227\n3.24572151898734,18.6776819657173\n3.29522784810127,18.4109241123963\n3.34473417721519,18.1533810871694\n3.39424050632911,17.9038917888661\n3.44374683544304,17.6613801039195\n3.49325316455696,17.4367412601373\n3.54275949367089,17.2198928657746\n3.59226582278481,16.9885817927012\n3.64177215189873,16.7560619903523\n3.69127848101266,16.5274875375278\n3.74078481012658,16.3032371340526\n3.79029113924051,16.0836894797512\n3.83979746835443,15.8692232744485\n3.88930379746835,15.6600927173047\n3.93881012658228,15.4562638006676\n3.9883164556962,15.2577332064667\n4.03782278481013,15.064498632161\n4.08732911392405,14.8765577752094\n4.13683544303798,14.6939083330709\n4.1863417721519,14.5165480032044\n4.23584810126582,14.344474483069\n4.28535443037975,14.1776854701235\n4.33486075949367,14.016178661827\n4.3843670886076,13.8599517556385\n4.43387341772152,13.7090024490167\n4.48337974683544,13.5633284394209\n4.53288607594937,13.4229274243098\n4.58239240506329,13.2877971011425\n4.63189873417722,13.157935167378\n4.68140506329114,13.0333393204751\n4.73091139240506,12.9140072578929\n4.78041772151899,12.7999366770903\n4.82992405063291,12.6911252755264\n4.87943037974684,12.58757075066\n4.92893670886076,12.4892707999501\n4.97844303797468,12.3962231208557\n5.02794936708861,12.3084254108357\n5.07745569620253,12.2258753673492\n5.12696202531646,12.148570687855\n5.17646835443038,12.0765090698122\n5.2259746835443,12.0096882106797\n5.27548101265823,11.9481058079165\n5.32498734177215,11.8917595589815\n5.37449367088608,11.8406471613337\n5.424,11.7947663124321&quot;
-    },
-    {
-      &quot;name&quot;: &quot;scale/x&quot;,
-      &quot;format&quot;: {
-        &quot;type&quot;: &quot;csv&quot;,
-        &quot;parse&quot;: {
-          &quot;domain&quot;: &quot;number&quot;
-        }
-      },
-      &quot;values&quot;: &quot;\&quot;domain\&quot;\n1.31745\n5.61955&quot;
-    },
-    {
-      &quot;name&quot;: &quot;scale/y&quot;,
-      &quot;format&quot;: {
-        &quot;type&quot;: &quot;csv&quot;,
-        &quot;parse&quot;: {
-          &quot;domain&quot;: &quot;number&quot;
-        }
-      },
-      &quot;values&quot;: &quot;\&quot;domain\&quot;\n9.225\n35.075&quot;
-    }
-  ],
-  &quot;scales&quot;: [
-    {
-      &quot;name&quot;: &quot;x&quot;,
-      &quot;domain&quot;: {
-        &quot;data&quot;: &quot;scale/x&quot;,
-        &quot;field&quot;: &quot;data.domain&quot;
-      },
-      &quot;zero&quot;: false,
-      &quot;nice&quot;: false,
-      &quot;clamp&quot;: false,
-      &quot;range&quot;: &quot;width&quot;
-    },
-    {
-      &quot;name&quot;: &quot;y&quot;,
-      &quot;domain&quot;: {
-        &quot;data&quot;: &quot;scale/y&quot;,
-        &quot;field&quot;: &quot;data.domain&quot;
-      },
-      &quot;zero&quot;: false,
-      &quot;nice&quot;: false,
-      &quot;clamp&quot;: false,
-      &quot;range&quot;: &quot;height&quot;
-    }
-  ],
-  &quot;marks&quot;: [
-    {
-      &quot;type&quot;: &quot;line&quot;,
-      &quot;properties&quot;: {
-        &quot;update&quot;: {
-          &quot;stroke&quot;: {
-            &quot;value&quot;: &quot;#000000&quot;
-          },
-          &quot;strokeWidth&quot;: {
-            &quot;value&quot;: 2
-          },
-          &quot;x&quot;: {
-            &quot;scale&quot;: &quot;x&quot;,
-            &quot;field&quot;: &quot;data.pred</em>&quot;
-          },
-          &quot;y&quot;: {
-            &quot;scale&quot;: &quot;y&quot;,
-            &quot;field&quot;: &quot;data.resp_&quot;
-          },
-          &quot;fill&quot;: {
-            &quot;value&quot;: &quot;transparent&quot;
-          }
-        },
-        &quot;ggvis&quot;: {
-          &quot;data&quot;: {
-            &quot;value&quot;: &quot;.0/model_prediction1&quot;
-          }
-        }
-      },
-      &quot;from&quot;: {
-        &quot;data&quot;: &quot;.0/model_prediction1&quot;
-      }
-    },
-    {
-      &quot;type&quot;: &quot;symbol&quot;,
-      &quot;properties&quot;: {
-        &quot;update&quot;: {
-          &quot;fill&quot;: {
-            &quot;value&quot;: &quot;#000000&quot;
-          },
-          &quot;x&quot;: {
-            &quot;scale&quot;: &quot;x&quot;,
-            &quot;field&quot;: &quot;data.wt&quot;
-          },
-          &quot;y&quot;: {
-            &quot;scale&quot;: &quot;y&quot;,
-            &quot;field&quot;: &quot;data.mpg&quot;
-          },
-          &quot;size&quot;: {
-            &quot;field&quot;: &quot;data.reactive_834743807&quot;
-          }
-        },
-        &quot;ggvis&quot;: {
-          &quot;data&quot;: {
-            &quot;value&quot;: &quot;.0&quot;
-          }
-        }
-      },
-      &quot;from&quot;: {
-        &quot;data&quot;: &quot;.0&quot;
-      }
-    }
-  ],
-  &quot;legends&quot;: [],
-  &quot;axes&quot;: [
-    {
-      &quot;type&quot;: &quot;x&quot;,
-      &quot;scale&quot;: &quot;x&quot;,
-      &quot;orient&quot;: &quot;bottom&quot;,
-      &quot;layer&quot;: &quot;back&quot;,
-      &quot;grid&quot;: true,
-      &quot;title&quot;: &quot;wt&quot;
-    },
-    {
-      &quot;type&quot;: &quot;y&quot;,
-      &quot;scale&quot;: &quot;y&quot;,
-      &quot;orient&quot;: &quot;left&quot;,
-      &quot;layer&quot;: &quot;back&quot;,
-      &quot;grid&quot;: true,
-      &quot;title&quot;: &quot;mpg&quot;
-    }
-  ],
-  &quot;padding&quot;: null,
-  &quot;ggvis_opts&quot;: {
-    &quot;keep_aspect&quot;: false,
-    &quot;resizable&quot;: true,
-    &quot;padding&quot;: {},
-    &quot;duration&quot;: 250,
-    &quot;renderer&quot;: &quot;svg&quot;,
-    &quot;hover_duration&quot;: 0,
-    &quot;width&quot;: 504,
-    &quot;height&quot;: 504
-  },
-  &quot;handlers&quot;: null
-};
-ggvis.getPlot(&quot;plot_id284012464&quot;).parseSpec(plot_id284012464_spec);
-</script>&lt;!&ndash;/html_preserve&ndash;&gt;</p>
-
 <h1>plotly</h1>
 
 <pre><code class="r"># opens in brower, but not R viewer
 suppressPackageStartupMessages(library(plotly))
 
-# generate plot with this code, then find js on plotly website
+# generate plot with this code, then find js on plotly website for cat
 # p &lt;- plot_ly(economics, x = date, y = uempmed, filename=&quot;r-docs/knitr-example&quot;)
 # p
 
-# find the js on the plotly website.
 cat(&#39;&lt;iframe width=&quot;900&quot; height=&quot;800&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://plot.ly/~sthobbs/10.embed&quot;&gt;&lt;/iframe&gt;&#39;)
 </code></pre>
 
